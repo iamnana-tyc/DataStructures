@@ -66,6 +66,45 @@ namespace BinaryTrees
             InOrderTraversal(node.right);
 
         }
+
+        public TreeNode Clone()
+        {
+            // this creates a new node witht the current node's value.
+            TreeNode newNode = new TreeNode(this.value);
+
+            // Recursively clone the left subtree if it exists
+            if(this.left != null)
+            {
+                newNode.left = this.left.Clone();
+            }
+
+            // Recursively clone the right subtree if it exists
+            if(this.right != null)
+            {
+                newNode.right = this.right.Clone();
+            }
+
+            // Return the new cloned node, which is the root of the cloned subtree
+            return newNode;
+
+        }
+
+        public void Clear()
+        {
+            if (left != null)
+            {
+                left.Clear();
+                left = null;
+            }
+
+            if (right != null )
+            {
+                right.Clear();
+                right = null;
+            }
+        }
+
+
     }
 
 }
